@@ -1,0 +1,20 @@
+{
+  "name": "caprine",
+  "productName": "Caprine",
+  "version": "0.5.1",
+  "description": "Unofficial Facebook Messenger app",
+  "license": "MIT",
+  "electronVersion": "0.36.0",
+  "files": [
+    "index.js",
+    "browser.js",
+    "browser.css",
+    "menu.js",
+    "media/Icon.icns",
+    "media/Icon.ico"
+  ],
+  "dependencies": {
+    "electron-debug": "^0.5.0",
+    "electron-dl": "^0.2.0"
+  }
+}
