@@ -13,7 +13,7 @@ export default class Home extends Component {
   };
 
   handleSubmit() {
-    this.props.history.pushState(null, '/success' );
+    this.props.history.pushState( null, '/success' );
   }
 
   render() {

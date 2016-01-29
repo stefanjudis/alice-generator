@@ -132,13 +132,14 @@
     "webpack-target-electron-renderer": "^0.3.0"
   },
   "dependencies": {
-    "electron-patch-fs": "^1.0.3",
-    "electron-packager": "^5.2.0",
     "electron-debug": "^0.5.1",
+    "electron-packager": "^5.2.0",
+    "electron-patch-fs": "^1.0.3",
     "font-awesome": "^4.4.0",
     "history": "^1.17.0",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-dropzone": "^3.3.2",
     "react-redux": "^4.0.5",
     "react-router": "^1.0.3",
     "redux": "^3.0.5",

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Alice - Image Search</title>
+    <style>
+      #view {
+        position : absolute;
+
+        top : 2em;
+        right : 0;
+        bottom : 0;
+        left : 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      Image Preview
+    </div>
+    <webview id="view" preload="./index.js"></webview>
+
+    <script>
+      var remote = require( 'remote' );
+      var term   = remote.getGlobal( 'term' );
+      var view   = document.getElementById( 'view' );
+
+      view.setAttribute( 'src', `https://www.google.de/search?q=${term}+icon&tbm=isch` );
+    </script>
+  </body>
+</html>

@@ -2,6 +2,7 @@
 'use strict';
 
 const electron = require('electron');
+const ipcMain = electron.ipcMain;
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
@@ -9,7 +10,8 @@ const crashReporter = electron.crashReporter;
 const shell = electron.shell;
 let menu;
 let template;
-let mainWindow = null;
+let mainWindow   = null;
+let searchWindow = null;
 
 
 crashReporter.start();
@@ -33,9 +35,9 @@ app.on('ready', () => {
   } );
 
   if (process.env.HOT) {
-    mainWindow.loadURL(`file://${__dirname}/app/hot-dev-app.html`);
+    mainWindow.loadURL(`file://${__dirname}/app/hot-dev-index.html`);
   } else {
-    mainWindow.loadURL(`file://${__dirname}/app/app.html`);
+    mainWindow.loadURL(`file://${__dirname}/app/index.html`);
   }
 
   mainWindow.on('closed', () => {
@@ -245,4 +247,31 @@ app.on('ready', () => {
     menu = Menu.buildFromTemplate(template);
     mainWindow.setMenu(menu);
   }
-});
+
+  // not needed when we go with dropzone
+  //
+  ipcMain.on( 'image-search', function( event, term ) {
+    if ( ! searchWindow ) {
+      searchWindow = new BrowserWindow( {
+        width         : 1000,
+        height        : 800,
+        title         : 'Choose an image for:' + term,
+        resizable     : false
+      } );
+
+      global.term = term;
+
+      searchWindow.loadURL(`file://${__dirname}/preview/index.html`);
+
+      searchWindow.on('closed', () => {
+        searchWindow = null;
+      });
+    }
+  } );
+
+  ipcMain.on( 'image-click', function( event, src ) {
+    mainWindow.webContents.send( 'image-set', src );
+
+    searchWindow.close();
+  } );
+} );

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Dropzone from 'react-dropzone';
 
 export default class App extends Component {
   static propTypes = {

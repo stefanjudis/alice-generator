@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ImageSearch from '../image-search/index';
 import { Link, router } from 'react-router';
 import styles from './style.module.css';
 import transitions from './transitions.module.css';
@@ -21,14 +22,10 @@ export default class GeneratorForm extends Component {
         {
           type : 'url',
           name : 'appUrl'
-        },
-        {
-          type : 'file',
-          name : 'appLogo'
         }
       ],
       values : {
-        appName : 'fooo',
+        appName : 'CodePen',
         appUrl  : 'http://google.com'
       }
     };
@@ -82,6 +79,7 @@ export default class GeneratorForm extends Component {
             <ul>
               { this.state.fields.map( this.renderField, this ) }
             </ul>
+            <ImageSearch term={ this.state.values.appName }></ImageSearch>
             <button>Generate</button>
           </fieldset>
         </form>

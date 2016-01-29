@@ -1,0 +1,13 @@
+.dropZone {
+  display : block;
+  height : 7em;
+
+  border : 2px dashed #aaa;
+}
+
+.activeDropZone {
+  display : block;
+  height : 7em;
+
+  border : 2px dashed red;
+}
