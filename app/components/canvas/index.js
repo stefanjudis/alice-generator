@@ -31,13 +31,16 @@ class Canvas extends Component {
     context.save();
 
     let image = new Image();
+
     image.src = this.props.src;
 
-    context.drawImage(image, 0, 0);
+    image.onload = function() {
+      context.drawImage(image, 0, 0);
 
-    this.props.setImage(
-      ReactDOM.findDOMNode( this ).toDataURL( 'image/png' )
-    );
+      this.props.setImage(
+        ReactDOM.findDOMNode( this ).toDataURL( 'image/png' )
+      );
+    }.bind( this );
   }
 
   render() {
