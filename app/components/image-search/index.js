@@ -3,7 +3,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import styles from './style.module.css';
 import { ipcRenderer } from 'electron';
 import Dropzone from 'react-dropzone';
-
+import Canvas from '../canvas/index';
 
 export default class ImageSearch extends Component {
   constructor() {
@@ -45,7 +45,7 @@ export default class ImageSearch extends Component {
         </Dropzone>
         {
           this.state.files.length > 0 ?
-          <div>{this.state.files.map((file, index ) => <img key={ index } src={file.preview} /> )}</div> :
+          <div>{this.state.files.map((file, index ) => <Canvas key={ index } src={file.preview}></Canvas> )}</div> :
           null
         }
 
